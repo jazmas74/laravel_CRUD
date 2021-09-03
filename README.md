@@ -18,3 +18,4 @@ https://qiita.com/sano1202/items/6021856b70e4f8d3dc3d
 
 - [【Laravel】Docker環境にXdebug3を導入&VSCodeでデバッグ(M1対応)](https://yutaro-blog.net/2021/07/08/laravel-docker-xdebug-vscode/)
 
+# laravel_CRUD
