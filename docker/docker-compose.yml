@@ -5,9 +5,7 @@ volumes:
 
 services:
   app:
-    build: php
-#      context: .
-#      dockerfile: ./docker/php/Dockerfile
+    build: ./php
     volumes:
       - ../src/:/var/www/html
     environment:
@@ -15,17 +13,16 @@ services:
       - DB_USERNAME=my_user
       - DB_DATABASE=my_database
       - DB_PASSWORD=my_password
-    depends_on:
-      - db
-      - web
+
   web:
-    build: nginx
-#      context: .
-#      dockerfile: ./docker/nginx/Dockerfile
+    build: ./nginx
     ports:
       - 80:80
     volumes:
       - ../src/:/var/www/html
+    depends_on:
+      - db
+      - app
 
   db:
     image: docker.io/bitnami/mariadb:10.2
@@ -35,7 +32,6 @@ services:
       - MARIADB_USER=my_user
       - MARIADB_DATABASE=my_database
       - MARIADB_PASSWORD=my_password
-
     volumes:
       - db-volume:/var/lib/mysql
 
